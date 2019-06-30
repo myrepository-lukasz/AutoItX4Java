@@ -1,0 +1,1 @@
+Java project which use AutoIt library
