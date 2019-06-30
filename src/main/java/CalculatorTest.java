@@ -1,6 +1,6 @@
 import com.jacob.com.LibraryLoader;
 
-import java.io.File;g
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,8 +54,13 @@ public class CalculatorTest {
         ct.control.winActivate("Kalkulator");
         //ct.control.winWaitActive("Kalkulator");
 
-        //Perform Addition
-        System.out.println("Addition of 1, 3 - Actual Result: " + ct.add(1,3) + ", Ecpected Result: 4");
+        //Test
+        System.out.println("100 + 2 -> Actual Result: " + ct.add(100,2) + ", Ecpected Result: 102");
+        System.out.println("100 - 2 -> Actual Result: " + ct.sub(100,2) + ", Ecpected Result: 98");
+        System.out.println("100 * 2 -> Actual Result: " + ct.multi(100,2) + ", Ecpected Result: 200");
+        System.out.println("100 / 2 -> Actual Result: " + ct.divide(100,2) + ", Ecpected Result: 50");
+
+        System.out.println();
 
         //Close "Calculator' application
         ct.control.winClose("Calculator");
@@ -73,6 +78,41 @@ public class CalculatorTest {
         return Integer.parseInt(getResult().trim());
     }
 
+    //Perform 'Subtract'
+    public int sub(int a, int b) throws InterruptedException {
+        performOperation("clear");
+
+        clickNumber(a);
+        performOperation("-");
+        clickNumber(b);
+        performOperation("=");
+
+        return Integer.parseInt(getResult().trim());
+    }
+
+    //Perform 'Multiplication'
+    public int multi(int a, int b) throws InterruptedException {
+        performOperation("clear");
+
+        clickNumber(a);
+        performOperation("*");
+        clickNumber(b);
+        performOperation("=");
+
+        return Integer.parseInt(getResult().trim());
+    }
+
+    //Perform 'Division'
+    public int divide(int a, int b) throws InterruptedException {
+        performOperation("clear");
+
+        clickNumber(a);
+        performOperation("/");
+        clickNumber(b);
+        performOperation("=");
+
+        return Integer.parseInt(getResult().trim());
+    }
     //Fetch the result in the calculator application
     private String getResult() throws InterruptedException {
         Thread.sleep(DELAY);
