@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CalculatorTest {
+public class Calculator {
     final String JACOB_DLL_TO_USE = System.getProperty("sun.arch.data.model").contains("32") ?
             "jacob-1.19-x86.dll" : "jacob-1.19-x64.dll";
     final String APPLICATION_TITLE = "Kalkulator";
@@ -47,12 +47,12 @@ public class CalculatorTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        CalculatorTest ct = new CalculatorTest();
+        Calculator ct = new Calculator();
 
         //Launch 'Calculator' application
         ct.control.run("calc.exe");
         ct.control.winActivate("Kalkulator");
-        //ct.control.winWaitActive("Kalkulator");
+        ct.control.winWaitActive("Kalkulator");
 
         //Test
         System.out.println("100 + 2 -> Actual Result: " + ct.add(100,2) + ", Ecpected Result: 102");
